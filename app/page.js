@@ -1,6 +1,5 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
+import Image from 'next/image'
+import styles from './page.module.css'
 export default function Home() {
   return (
     <main className={styles.main}>
@@ -15,7 +14,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{" "}
+            By{' '}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -73,7 +72,7 @@ export default function Home() {
           <h2>
             Templates <span>-&gt;</span>
           </h2>
-          <p>Explore starter templates for Next.js.</p>
+          <p>Explore the Next.js 13 playground.</p>
         </a>
 
         <a
@@ -91,5 +90,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  );
+  )
 }
