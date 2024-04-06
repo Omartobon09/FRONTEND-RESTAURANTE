@@ -47,19 +47,25 @@ const Menu = () => {
                 Agregar Usuario
               </Link>
               <div className="sb-sidenav-menu-heading">
-                2. Gestión de recursos
+                2. Gestión de Inventario
               </div>
-              <Link className="nav-link" href="/admin/appeal/listar">
+              <Link className="nav-link" href="/admin/products/create">
                 <div className="sb-nav-link-icon">
                   <i className="fa-solid fa-folder-open"></i>
                 </div>
-                Recursos
+                Crear Producto
               </Link>
               <Link className="nav-link" href="/admin/appeal/create">
                 <div className="sb-nav-link-icon">
                   <i className="fa-solid fa-folder-plus"></i>
                 </div>
-                Agregar Recurso
+                Agregar Productos al inventario
+              </Link>
+              <Link className="nav-link" href="/admin/appeal/create">
+                <div className="sb-nav-link-icon">
+                <i class="fa-solid fa-eye"></i>
+                </div>
+                Ver inventario
               </Link>
             </>
           )}
