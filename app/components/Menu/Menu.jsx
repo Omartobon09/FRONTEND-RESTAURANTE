@@ -88,7 +88,7 @@ const Menu = () => {
                 </div>
                 Ver ordenes
               </Link>
-              <Link className="nav-link" href="admin/facture/sale">
+              <Link className="nav-link" href="/admin/facture/sale">
                 <div className="sb-nav-link-icon">
                   <i className="fa-solid fa-folder-plus"></i>
                 </div>

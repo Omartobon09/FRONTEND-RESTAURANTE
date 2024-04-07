@@ -80,4 +80,4 @@ const SalePage = () => {
   );
 };
 
-export default ProductPage;
+export default SalePage;

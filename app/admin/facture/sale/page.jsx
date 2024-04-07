@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
 
 const SalePage = () => {
   const router = useRouter();
-  const [sale, setSale] = useState([]);
+  const [sales, setSales] = useState([]);
   const [adminSite, setAdminSite] = useState(null);
   const [adminUser, setAdminUser] = useState(null);
 
@@ -34,7 +34,7 @@ const SalePage = () => {
       const filteredSale = response.data.resuultado.filter(
         (sale) => sale.idSite === adminSite && sale.idUser === adminUser
       );
-      setSale(filteredSale);
+      setSales(filteredSale);
     });
   };
 
@@ -57,7 +57,7 @@ const SalePage = () => {
   }
 
   useEffect(() => {
-    getPendientFactur();
+    getPendientFacture();
   }, [adminSite, adminUser])
 
   return (
@@ -103,4 +103,4 @@ const SalePage = () => {
   );
 };
 
-export default ProductPage;
+export default SalePage;
