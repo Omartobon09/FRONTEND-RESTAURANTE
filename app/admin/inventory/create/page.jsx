@@ -83,7 +83,7 @@ const AddOrderForm = () => {
       <form onSubmit={handleSubmit} className="p-grid p-fluid">
         <div className="title-form">Inventariar</div>
         <div className="p-col-6">
-          <div className="p-field">
+          <div className="formgrid">
             <label htmlFor="quantity">Cantidad:</label>
             <InputText
               id="quantity"
@@ -93,7 +93,7 @@ const AddOrderForm = () => {
           </div>
         </div>
         <div className="p-col-6">
-          <div className="p-field">
+          <div className="formgrid">
             <label htmlFor="product">Producto:</label>
             <Dropdown
               id="product"
@@ -111,7 +111,7 @@ const AddOrderForm = () => {
           </div>
         </div>
         <div className="p-col-6">
-          <div className="p-field">
+          <div className="formgrid">
             <label htmlFor="unit">Unidad:</label>
             <InputText id="unit" value={selectedProductUnit} readOnly />
           </div>
