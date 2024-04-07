@@ -1,74 +1,65 @@
-"use client";
+"use client"
 import axios from "axios";
-import { useEffect, useState } from "react";
-import "@fortawesome/fontawesome-free/css/all.css";
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/react";
+import { useEffect, useRef, useState } from "react";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@nextui-org/react";
+import { Toast } from "primereact/toast";
 
-const InventoryProductsPage = () => {
+const InventoryPage = () => {
+  const toast = useRef(null);
   const [inventoryProducts, setInventoryProducts] = useState([]);
-  const user = JSON.parse(localStorage.getItem("user"));
+  const [adminSite, setAdminSite] = useState(null);
 
   useEffect(() => {
-    if (user) {
-      axios
-        .get(
-          `http://127.0.0.1:8000/get/inventory-products?idSite=${user.idSite}`
-        )
-        .then((response) => {
-          setInventoryProducts(response.data.resultado);
-        })
-        .catch((error) => {
-          console.error("Error al obtener los productos de inventario:", error);
-          setInventoryProducts([]);
-        });
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user && user.idSite) {
+      setAdminSite(user.idSite);
+      fetchInventoryProducts(user.idSite);
     }
-  }, [user]);
+  }, []);
 
-  const handleEditClick = (idProduct) => {
-    localStorage.setItem("productId", idProduct);
-    window.location.href = `/admin/inventory/edit-productos`;
+  const fetchInventoryProducts = (idSite) => {
+    axios
+      .get(`http://127.0.0.1:8000/get/inventory-products?idSite=${idSite}`)
+      .then((response) => {
+        setInventoryProducts(response.data.resultado);
+      })
+      .catch((error) => {
+        console.error("Error al obtener el inventario de productos:", error);
+      });
   };
 
   return (
     <>
-      <h2>Productos de Inventario</h2>
-      <Table
-        aria-label="Lista de productos de inventario"
-        className="CustomTable"
-      >
+      <Toast ref={toast} />
+      <h2>Inventario de Productos</h2>
+      <Table aria-label="Inventario de productos" className="CustomTable">
         <TableHeader>
-          <TableColumn>Nombre</TableColumn>
-          <TableColumn>Unidad</TableColumn>
-          <TableColumn>Acciones</TableColumn>
+          <TableColumn>ID</TableColumn>
+          <TableColumn>Cantidad</TableColumn>
+          <TableColumn>Sede</TableColumn>
+          <TableColumn>ID de Producto</TableColumn>
         </TableHeader>
         <TableBody>
-          {Array.isArray(inventoryProducts) &&
-            inventoryProducts.map((product) => (
-              <TableRow key={product.id}>
-                <TableCell>{product.NameProduct}</TableCell>
-                <TableCell>{product.Unit}</TableCell>
-                <TableCell>
-                  <FontAwesomeIcon
-                    icon={faPenToSquare}
-                    style={{ cursor: "pointer" }}
-                    onClick={() => handleEditClick(product.id)}
-                  />
-                </TableCell>
-              </TableRow>
-            ))}
+          {inventoryProducts.map((product) => (
+            <TableRow key={product.id}>
+              <TableCell>{product.id}</TableCell>
+              <TableCell>{product.quantity}</TableCell>
+              <TableCell>
+                {product.idSite === 1
+                  ? "Sede 1"
+                  : product.idSite === 2
+                  ? "Sede 2"
+                  : product.idSite === 3
+                  ? "Sede 3"
+                  : null}
+              </TableCell>
+              <TableCell>{product.idProduct}</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </>
   );
 };
 
-export default InventoryProductsPage;
+export default InventoryPage;

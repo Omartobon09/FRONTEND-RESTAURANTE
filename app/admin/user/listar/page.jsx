@@ -18,7 +18,7 @@ const AdminPage = () => {
   const router = useRouter();
   const toast = useRef(null);
   const [users, setUsers] = useState([]);
-  const [adminSite, setAdminSite] = useState(null); // Sede del administrador
+  const [adminSite, setAdminSite] = useState(null); 
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
