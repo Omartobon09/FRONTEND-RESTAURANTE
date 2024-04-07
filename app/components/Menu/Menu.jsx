@@ -55,17 +55,44 @@ const Menu = () => {
                 </div>
                 Crear Producto
               </Link>
-              <Link className="nav-link" href="/admin/appeal/create">
+              <Link
+                className="nav-link"
+                href="/admin/products/listar-productos"
+              >
+                <div className="sb-nav-link-icon">
+                  <i className="fa-solid fa-folder-open"></i>
+                </div>
+                Ver Productos
+              </Link>
+              <Link className="nav-link" href="/admin/inventory/create">
                 <div className="sb-nav-link-icon">
                   <i className="fa-solid fa-folder-plus"></i>
                 </div>
                 Agregar Productos al inventario
               </Link>
-              <Link className="nav-link" href="/admin/appeal/create">
+              <Link
+                className="nav-link"
+                href="/admin/inventory/listar-inventory"
+              >
                 <div className="sb-nav-link-icon">
-                <i class="fa-solid fa-eye"></i>
+                  <i className="fa-solid fa-eye"></i>
                 </div>
                 Ver inventario
+              </Link>
+              <div className="sb-sidenav-menu-heading">
+                3. Gestión de Facturas
+              </div>
+              <Link className="nav-link" href="/admin/products/create">
+                <div className="sb-nav-link-icon">
+                  <i className="fa-solid fa-folder-open"></i>
+                </div>
+                Ver ordenes
+              </Link>
+              <Link className="nav-link" href="admin/facture/sale">
+                <div className="sb-nav-link-icon">
+                  <i className="fa-solid fa-folder-plus"></i>
+                </div>
+                Ver facturas
               </Link>
             </>
           )}

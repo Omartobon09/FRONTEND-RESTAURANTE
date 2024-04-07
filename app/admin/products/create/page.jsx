@@ -1,10 +1,10 @@
-"use client"
+"use client";
+import React, { useRef } from "react";
 import axios from "axios";
 import { Dropdown } from "primereact/dropdown";
 import { InputText } from "primereact/inputtext";
 import { classNames } from "primereact/utils";
-import React, { useEffect, useRef, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { Toast } from "primereact/toast";
 import { Button } from "primereact/button";
 import "../../../css/style.css";
@@ -17,6 +17,14 @@ const CreateProduct = () => {
       Unit: "",
     },
   });
+
+
+  const units = [
+    { label: "Kilogramo (kg)", value: "Kilogramo" },
+    { label: "Gramo (g)", value: "Gramo" },
+    { label: "Litro (l)", value: "Litro" },
+    { label: "Mililitro (ml)", value: "Mililitro" },
+  ];
 
   const onSubmit = (data) => {
     axios
@@ -80,10 +88,13 @@ const CreateProduct = () => {
                 <>
                   <div className="flex flex-column">
                     <label htmlFor={field.name}>Unidad</label>
-                    <InputText
+                    <Dropdown
                       id={field.name}
                       value={field.value}
-                      onChange={(e) => field.onChange(e.target.value)}
+                      options={units}
+                      onChange={(e) => field.onChange(e.value)}
+                      optionLabel="label"
+                      placeholder="Seleccione una unidad"
                       className={classNames({ "p-invalid": fieldState.error })}
                     />
                     {fieldState.error && (
