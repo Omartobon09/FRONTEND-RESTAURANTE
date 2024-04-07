@@ -66,9 +66,9 @@ const SalePage = () => {
       <Table aria-label="Lista de factura" className="CustomTable">
         <TableHeader>
           <TableColumn>Código Factura</TableColumn>
+          <TableColumn>Código de Orden</TableColumn>
           <TableColumn>Total a Pagar</TableColumn>
           <TableColumn>Descuento</TableColumn>
-          <TableColumn>Total a pagar</TableColumn>
           <TableColumn>Estado de Factura</TableColumn>
           <TableColumn>Fecha de creación</TableColumn>
           <TableColumn>Acciones</TableColumn>
