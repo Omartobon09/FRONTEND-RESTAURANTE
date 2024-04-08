@@ -82,7 +82,7 @@ const Menu = () => {
               <div className="sb-sidenav-menu-heading">
                 3. Gestión de Facturas
               </div>
-              <Link className="nav-link" href="/admin/products/create">
+              <Link className="nav-link" href="/admin/facture/view-order">
                 <div className="sb-nav-link-icon">
                   <i className="fa-solid fa-folder-open"></i>
                 </div>
@@ -136,7 +136,7 @@ const Menu = () => {
                 Ver ordenes
               </Link>
               <div className="sb-sidenav-menu-heading">2. Inventario</div>
-              <Link className="nav-link" href="/teachers/estado">
+              <Link className="nav-link" href="/cocineros/inventory/listar-inventory">
                 <div className="sb-nav-link-icon">
                   <i className="fa-solid fa-person-chalkboard"></i>
                 </div>

@@ -56,31 +56,6 @@ const InventoryPage = () => {
     router.push(`/admin/inventory/edit-inventory`);
   };
 
-  const handleDeleteClick = async (id) => {
-    try {
-      await axios.delete(
-        `http://127.0.0.1:8000/delete/inventory-products/${id}`
-      );
-
-      const updatedProducts = inventoryProducts.filter(
-        (product) => product.id !== id
-      );
-      setInventoryProducts(updatedProducts);
-      toast.current.show({
-        severity: "success",
-        summary: "Producto eliminado",
-        detail: "El producto ha sido eliminado exitosamente.",
-      });
-    } catch (error) {
-      console.error("Error al eliminar el producto:", error);
-      toast.current.show({
-        severity: "error",
-        summary: "Error",
-        detail: "Hubo un error al intentar eliminar el producto.",
-      });
-    }
-  };
-
   return (
     <>
       <Toast ref={toast} />
@@ -103,11 +78,6 @@ const InventoryPage = () => {
                   icon={faPenToSquare}
                   style={{ marginLeft: "20px", cursor: "pointer" }}
                   onClick={() => handleEditClick(product.id)}
-                />
-                <FontAwesomeIcon
-                  icon={faTrash}
-                  style={{ marginLeft: "10px", cursor: "pointer" }}
-                  onClick={() => handleDeleteClick(product.id)}
                 />
               </TableCell>
             </TableRow>

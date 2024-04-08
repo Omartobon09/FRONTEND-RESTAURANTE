@@ -21,13 +21,11 @@ const MeseroPage = () => {
   const toast = useRef(null);
   const [orders, setOrders] = useState([]);
   const [adminSite, setAdminSite] = useState(null);
-  const [adminUser, setAdminUser] = useState(null);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user && user.idSite) {
       setAdminSite(user.idSite);
-      setAdminUser(user.idUser);
     }
   }, []);
 
@@ -36,7 +34,7 @@ const MeseroPage = () => {
       .get("http://127.0.0.1:8000/get/orders/status/entregado")
       .then((response) => {
         const filteredOrders = response.data.resultado.filter(
-          (order) => order.idSite === adminSite && order.idUser === adminUser
+          (order) => order.idSite === adminSite
         );
         setOrders(filteredOrders);
       })
@@ -47,7 +45,7 @@ const MeseroPage = () => {
 
   useEffect(() => {
     getPendingOrders();
-  }, [adminSite, adminUser]);
+  }, [adminSite]);
 
   return (
     <>
