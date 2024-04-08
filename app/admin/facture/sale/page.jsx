@@ -46,8 +46,6 @@ const SalePage = () => {
     doc.text(`Estado de Factura: ${sale.PaymentStatus}`, 10, 70);
     doc.text(`Fecha de creación: ${sale.CreationDate}`, 10, 80);
     doc.save(`Código de factura: ${sale.idInvoice}.pdf`);
-
-    
   };
 
   return (
