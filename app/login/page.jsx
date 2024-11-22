@@ -11,6 +11,8 @@ function Formulario() {
   const [error, setError] = useState(null);
   const [saludo, setSaludo] = useState("");
 
+
+
   useEffect(() => {
     const horaActual = new Date().getHours();
     if (horaActual >= 6 && horaActual < 18) {
@@ -149,3 +151,6 @@ function Formulario() {
 }
 
 export default Formulario;
+
+
+
